@@ -1,0 +1,117 @@
+[gd_scene load_steps=6 format=3 uid="uid://dssml38wkh667"]
+
+[ext_resource type="Texture2D" uid="uid://d0rwau7otv4kp" path="res://Flappy Bird Assets/Tiles/Style 1/PipeStyle1.png" id="1_0vqfg"]
+[ext_resource type="Script" path="res://pipes.gd" id="2_lwodv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnjk3"]
+texture = ExtResource("1_0vqfg")
+texture_region_size = Vector2i(32, 16)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8, 16, -8, 16, 8, -16, 8)
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qytpj"]
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_cnjk3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1vj1"]
+size = Vector2(20, 402)
+
+[node name="Pipes" type="TileMap"]
+position = Vector2(-1, -5)
+tile_set = SubResource("TileSet_qytpj")
+format = 2
+layer_0/tile_data = PackedInt32Array(6, 0, 0, 65542, 0, 1, 131078, 0, 1, 1572870, 0, 4, 1507334, 0, 1, 1441798, 0, 1, 196614, 0, 1, 262150, 0, 4, 1310726, 0, 0, 1376262, 0, 1)
+script = ExtResource("2_lwodv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(217, 196)
+scale = Vector2(0.53616, 0.980987)
+shape = SubResource("RectangleShape2D_q1vj1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
